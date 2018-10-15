@@ -16,6 +16,7 @@ SRC = \
 	bzero\
 	isalnum\
 	isalpha\
+	isascii\
 	isdigit\
 	strcat
 
