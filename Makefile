@@ -20,6 +20,7 @@ SRC = \
 	isdigit\
 	isprint\
 	strcat\
+	tolower\
 	toupper
 
 OBJ = $(patsubst %, $(OBJ_DIR)/ft_%.o, $(SRC))
