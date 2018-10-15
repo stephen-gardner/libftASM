@@ -19,7 +19,8 @@ SRC = \
 	isascii\
 	isdigit\
 	isprint\
-	strcat
+	strcat\
+	toupper
 
 OBJ = $(patsubst %, $(OBJ_DIR)/ft_%.o, $(SRC))
 
