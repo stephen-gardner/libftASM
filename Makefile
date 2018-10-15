@@ -13,7 +13,8 @@ OBJ_DIR = obj
 # [ BASE ]
 
 SRC = \
-	bzero
+	bzero\
+	strcat
 
 OBJ = $(patsubst %, $(OBJ_DIR)/ft_%.o, $(SRC))
 
