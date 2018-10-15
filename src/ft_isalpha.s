@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 19:34:33 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/14 21:55:56 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/14 23:12:15 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,16 +14,16 @@
 
 	section .text
 _ft_isalpha:
-	mov		dl, dil
-	sub		dl, 'A'
-	cmp		dl, 26
+	xor		eax, eax
+	mov		edx, edi
+	sub		edx, 'A'
+	cmp		edx, 26
 	jb		.true
-	mov		dl, dil
-	sub		dl, 'a'
-	cmp		dl, 26
+	mov		edx, edi
+	sub		edx, 'a'
+	cmp		edx, 26
 	jb		.true
-	mov		rax, 0
 	ret
 .true:
-	mov		rax, 1
+	mov		al, 1
 	ret

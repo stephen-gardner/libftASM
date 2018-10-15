@@ -6,17 +6,14 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 21:13:48 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/14 21:54:07 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/14 23:01:33 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_isascii
 	section	.text
 _ft_isascii:
-	cmp		rdi, 0x7F
-	jbe		.true
-	mov		rax, 0
-	ret
-.true:
-	mov		rax, 1
+	xor		eax, eax
+	cmp		edi, 0x80
+	setb	al
 	ret
