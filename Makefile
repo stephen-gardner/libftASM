@@ -15,6 +15,7 @@ OBJ_DIR = obj
 SRC = \
 	bzero\
 	isalpha\
+	isdigit\
 	strcat
 
 OBJ = $(patsubst %, $(OBJ_DIR)/ft_%.o, $(SRC))
