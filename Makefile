@@ -19,6 +19,7 @@ SRC = \
 	isascii\
 	isdigit\
 	isprint\
+	memset\
 	puts\
 	strcat\
 	strlen\
