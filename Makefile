@@ -19,6 +19,7 @@ SRC = \
 	isascii\
 	isdigit\
 	isprint\
+	puts\
 	strcat\
 	tolower\
 	toupper
