@@ -21,6 +21,7 @@ SRC = \
 	isprint\
 	puts\
 	strcat\
+	strlen\
 	tolower\
 	toupper
 
