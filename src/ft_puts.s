@@ -6,11 +6,12 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/15 02:17:06 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 22:27:08 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/17 01:59:09 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_puts
+	extern	_writev
 
 	section	.text
 _ft_puts:
@@ -30,11 +31,10 @@ _ft_puts:
 	sub		rdx, rdi
 	mov		[rbp - 24], rdx
 	mov		[rbp - 32], rdi
-	mov		rax, 0x02000079			; writev syscall
 	mov		edi, 1
 	lea		rsi, [rbp - 32]
 	mov		edx, 2
-	syscall
+	call	_writev
 	add		rsp, 32
 	pop		rbp
 	ret
