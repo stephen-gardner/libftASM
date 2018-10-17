@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 05:35:39 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 20:47:41 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/16 21:54:31 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -26,10 +26,13 @@ _ft_strdup:
 	sub		rdi, rcx
 	mov		[rbp - 16], rdi		; Len
 	call	_malloc
+	cmp		rax, 0
+	je		.done
 	mov		rdi, rax
 	mov		rsi, [rbp - 8]
 	mov		rcx, [rbp - 16]
 	rep		movsb
+.done:
 	add		rsp, 16
 	pop		rbp
 	ret

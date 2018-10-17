@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/15 02:17:06 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 20:51:17 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/16 22:27:08 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -28,8 +28,8 @@ _ft_puts:
 	jmp		.len
 .write:
 	sub		rdx, rdi
-	mov		qword [rbp - 24], rdx
-	mov		qword [rbp - 32], rdi
+	mov		[rbp - 24], rdx
+	mov		[rbp - 32], rdi
 	mov		rax, 0x02000079			; writev syscall
 	mov		edi, 1
 	lea		rsi, [rbp - 32]
