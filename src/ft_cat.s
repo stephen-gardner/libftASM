@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 22:43:30 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 23:14:19 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/16 23:58:46 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -32,8 +32,7 @@ _ft_cat:
 	lea		rsi, [rbp - 5000]
 	syscall
 	cmp		rax, 0
-	jb		.done				; write error
-	jmp		.read
+	ja		.read
 .done:
 	add		rsp, 5000
 	pop		rbp
