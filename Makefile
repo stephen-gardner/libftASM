@@ -14,6 +14,7 @@ OBJ_DIR = obj
 
 SRC = \
 	bzero\
+	cat\
 	isalnum\
 	isalpha\
 	isascii\
