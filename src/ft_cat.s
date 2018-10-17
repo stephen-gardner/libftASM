@@ -6,34 +6,34 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 22:43:30 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 23:58:46 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/17 01:55:37 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_cat
+	extern	_read
+	extern	_write
 
 	section	.text
 _ft_cat:
 	push	rbp
 	mov		rbp, rsp
-	sub		rsp, 5000
+	sub		rsp, 4112
 	mov		[rbp - 4], edi		; input fd
 .read:
-	mov		rax, 0x02000003		; read syscall
 	mov		edi, [rbp - 4]
-	lea		rsi, [rbp - 5000]	; buffer
+	lea		rsi, [rbp - 4112]	; buffer
 	mov		rdx, 4096
-	syscall
+	call	_read
 	cmp		rax, 0
-	jbe		.done
+	jle		.done
 	mov		rdx, rax			; bytes read
-	mov		rax, 0x02000004		; write syscall
 	mov		edi, 1
-	lea		rsi, [rbp - 5000]
-	syscall
+	lea		rsi, [rbp - 4112]
+	call	_write
 	cmp		rax, 0
-	ja		.read
+	jg		.read
 .done:
-	add		rsp, 5000
+	add		rsp, 4112
 	pop		rbp
 	ret
