@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 04:32:01 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 05:18:02 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/17 21:12:52 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,9 +14,9 @@
 
 	section	.text
 _ft_memset:
-	push	rdi			; Destination
-	mov		al, sil		; Byte
-	mov		rcx, rdx	; Length
+	mov		r8, rdi		; destination
+	mov		al, sil		; byte
+	mov		rcx, rdx	; len
 	rep		stosb
-	pop		rax
+	mov		rax, r8
 	ret

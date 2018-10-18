@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 05:35:39 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 21:54:31 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 03:38:41 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -15,16 +15,16 @@
 
 	section	.text
 _ft_strdup:
-	push	rbp					; Save stack base pointer and align stack
+	push	rbp
 	mov		rbp, rsp
-	sub		rsp, 16				; Reserve space for local vars
-	mov		[rbp - 8], rdi		; Source
-	mov		al, 0
+	sub		rsp, 16
+	mov		[rbp - 8], rdi		; source
+	xor		al, al
 	mov		rcx, -1
 	repne	scasb
-	mov		rdi, -1
-	sub		rdi, rcx
-	mov		[rbp - 16], rdi		; Len
+	not		rcx
+	mov		rdi, rcx
+	mov		[rbp - 16], rdi		; len + 1
 	call	_malloc
 	cmp		rax, 0
 	je		.done

@@ -6,11 +6,12 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 20:16:36 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/14 23:10:45 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/17 21:43:24 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_isalnum
+
 	section	.text
 _ft_isalnum:
 	xor		eax, eax
@@ -18,15 +19,13 @@ _ft_isalnum:
 	sub		edx, 'A'
 	cmp		edx, 26
 	jb		.true
-	mov		edx, edi
-	sub		edx, 'a'
+	sub		edx, ('a' - 'A')
 	cmp		edx, 26
 	jb		.true
-	mov		edx, edi
-	sub		edx, '0'
-	cmp		edx, 10
+	sub		edi, '0'
+	cmp		edi, 10
 	jb		.true
 	ret
 .true:
-	mov		al, 1
+	inc		eax
 	ret

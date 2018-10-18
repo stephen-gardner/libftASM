@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 04:15:24 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/16 04:27:03 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/17 18:03:43 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,9 +14,9 @@
 
 	section	.text
 _ft_strlen:
-	mov		al, 0
+	xor		al, al
 	mov		rcx, -1
 	repne	scasb
-	mov		rax, 0
+	mov		rax, -2
 	sub		rax, rcx
 	ret

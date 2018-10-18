@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 03:17:38 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/14 17:23:56 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 03:27:28 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,19 +14,18 @@
 
 	section		.text
 _ft_strcat:
-	mov			rax, rdi
-.advance:
-	cmp byte	[rdi], 0
-	je			.copy
-	inc			rdi
-	jmp			.advance
-.copy:
-	mov byte	dl, [rsi]
-	mov byte	[rdi], dl
-	test		dl, dl
-	je			.done
-	inc			rsi
-	inc			rdi
-	jmp			.copy
-.done:
+	mov			r8, rdi
+	xor			al, al
+	mov			rcx, -1
+	repne		scasb		; scan to end of s1
+	mov			r9, rdi
+	dec			r9			; position of null terminator
+	xor			al, al
+	mov			rdi, rsi
+	mov			rcx, -1
+	repne		scasb
+	not			rcx			; s2 len + 1
+	mov			rdi, r9
+	rep			movsb
+	mov			rax, r8
 	ret

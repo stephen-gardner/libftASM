@@ -6,19 +6,20 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/15 01:44:34 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/15 02:06:06 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 03:40:50 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_tolower
+
 	section	.text
 _ft_tolower:
 	mov		eax, edi
 	sub		eax, 'A'
 	cmp		eax, 26
-	jb		.capitalize
+	jb		.lower
 	add		eax, 'A'
 	ret
-.capitalize:
+.lower:
 	add		eax, 'a'
 	ret
