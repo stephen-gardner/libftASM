@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 19:34:33 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/17 21:43:15 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 04:22:43 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,14 +14,17 @@
 
 	section .text
 _ft_isalpha:
+	push	rbp
+	mov		rbp, rsp
 	xor		eax, eax
 	sub		edi, 'A'
 	cmp		edi, 26
 	jb		.true
 	sub		edi, ('a' - 'A')
 	cmp		edi, 26
-	jb		.true
-	ret
+	jae		.done
 .true:
 	inc		eax
+.done:
+	pop		rbp
 	ret

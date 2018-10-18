@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 21:13:48 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/17 21:19:11 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 04:23:37 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,7 +14,10 @@
 
 	section	.text
 _ft_isascii:
+	push	rbp
+	mov		rbp, rsp
 	xor		eax, eax
 	cmp		edi, 0x80
 	setb	al
+	pop		rbp
 	ret

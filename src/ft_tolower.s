@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/15 01:44:34 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/18 03:40:50 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 04:35:24 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,12 +14,16 @@
 
 	section	.text
 _ft_tolower:
+	push	rbp
+	mov		rbp, rsp
 	mov		eax, edi
 	sub		eax, 'A'
 	cmp		eax, 26
 	jb		.lower
 	add		eax, 'A'
-	ret
+	jmp		.done
 .lower:
 	add		eax, 'a'
+.done:
+	pop		rbp
 	ret

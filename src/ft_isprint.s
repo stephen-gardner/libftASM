@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/14 22:52:26 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/17 17:26:14 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 04:24:28 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -14,8 +14,11 @@
 
 	section	.text
 _ft_isprint:
+	push	rbp
+	mov		rbp, rsp
 	xor		eax, eax
 	sub		edi, ' '
 	cmp		edi, ('~' - ' ' + 1)
 	setb	al
+	pop		rbp
 	ret
