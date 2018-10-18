@@ -6,12 +6,13 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:17:10 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 05:20:04 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/18 05:24:31 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTS_H
 # define LIBFTS_H
+# include <stddef.h>
 
 void	ft_bzero(void *s, size_t n);
 void	ft_cat(int fd);
