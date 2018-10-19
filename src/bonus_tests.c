@@ -6,13 +6,14 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 06:29:05 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 22:20:39 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/19 08:05:27 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_libfts.h"
 #include "libfts.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void		test_strchr(void)
@@ -56,4 +57,33 @@ void		test_strcmp(void)
 	run_strcmp("", "");
 	run_strcmp("", "string");
 	run_strcmp("string", "");
+}
+
+static void	split_arr(const char *str)
+{
+	char	**arr;
+	int		i;
+
+	printf("\"%s\"\n", str);
+	if (!(arr = ft_strsplit(str, ' ')))
+		return ;
+	i = 0;
+	while (arr[i])
+		printf(" > %s\n", arr[i++]);
+	free(arr);
+	printf("\n");
+}
+
+void		test_strsplit(void)
+{
+	printf("ft_strsplit:\n-----------\n");
+	split_arr("  This  is the string    to  split...       ");
+	split_arr("                       w                      ");
+	split_arr("wat");
+	split_arr(" word");
+	split_arr(" a");
+	split_arr("b ");
+	split_arr("z");
+	split_arr("         ");
+	split_arr("");
 }

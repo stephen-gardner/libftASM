@@ -28,6 +28,7 @@ SRC = \
 	strcmp\
 	strdup\
 	strlen\
+	strsplit\
 	tolower\
 	toupper
 

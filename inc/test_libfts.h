@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:46:56 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 21:26:22 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/19 05:42:14 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	test_strlen(void);
 
 void	test_strchr(void);
 void	test_strcmp(void);
+void	test_strsplit(void);
 #endif
