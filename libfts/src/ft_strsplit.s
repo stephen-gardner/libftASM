@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/19 04:20:04 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/19 07:57:12 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/19 21:23:56 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -18,47 +18,47 @@ _ft_strsplit:
 	push	rbp
 	mov		rbp, rsp
 	sub		rsp, 32				; alignment
-	xor		rdx, rdx			; # words
-	xor		rcx, rcx			; # chars
-	mov		r8, rdi				; input string
 	mov		al, sil				; delimiter
-.skip_delim:
-	scasb
-	je		.skip_delim
+	mov		rsi, rdi			; input string
+	xor		rdx, rdx			; # words
+	xor		r8, r8				; # chars
+.calc_size:
+	mov		rcx, -1
+	rep		scasb
 	dec		rdi
 	cmp		byte [rdi], 0
 	je		.alloc_array
 	inc		rdx
-.skip_chars:
-	inc		rcx
+.count_chars:
+	inc		r8
 	cmp		byte [rdi], 0
 	je		.alloc_array
 	scasb
-	jne		.skip_chars
-	jmp		.skip_delim
+	jne		.count_chars
+	jmp		.calc_size
 .alloc_array:
 	inc		rdx					; for NULL
-	shl		rdx, 3
-	add		rcx, rdx
+	shl		rdx, 3				; x8 words for pointers
+	add		r8, rdx
+	mov		rdi, r8
 	mov		[rbp - 8], rdx
-	mov		[rbp - 16], r8
+	mov		[rbp - 16], rsi
 	mov		[rbp - 24], al
-	mov		rdi, rcx
 	call	_malloc
+	cmp		rax, 0
+	je		.done
 	mov		r8, rax				; array start position
 	mov		rdx, rax			; array pointer position
 	mov		rdi, [rbp - 8]		; array data position
 	add		rdi, rax
 	mov		rsi, [rbp - 16]		; input string
 	mov		al, [rbp - 24]
-	cmp		rdx, 0
-	je		.done
 .build_array:
-	cmp		[rsi], al
-	jne		.copy_ptr
-	inc		rsi
-	jmp		.build_array
-.copy_ptr:
+	xchg	rdi, rsi
+	mov		rcx, -1
+	rep		scasb
+	dec		rdi
+	xchg	rdi, rsi
 	cmp		byte [rsi], 0
 	je		.terminate
 	mov		[rdx], rdi
