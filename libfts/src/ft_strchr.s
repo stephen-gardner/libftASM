@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/18 20:53:04 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/18 22:10:16 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/18 22:32:41 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -16,13 +16,13 @@
 _ft_strchr:
 	push	rbp
 	mov		rbp, rsp
-	dec		rdi
+	mov		al, sil
 .scan:
-	inc		rdi
 	cmp		byte [rdi], 0
 	je		.result
-	cmp		[rdi], sil
+	scasb
 	jne		.scan
+	dec		rdi
 .result:
 	xor		rax, rax
 	cmp		[rdi], sil
