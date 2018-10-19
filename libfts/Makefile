@@ -24,6 +24,7 @@ SRC = \
 	memset\
 	puts\
 	strcat\
+	strcmp\
 	strdup\
 	strlen\
 	tolower\

@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:09:48 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 06:18:46 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:54:21 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ static void	run_less_simple(void)
 	test_strdup();
 }
 
+static void	run_bonus(void)
+{
+	test_strcmp();
+}
+
 int			main(int ac, char *av[])
 {
 	if (ac != 2)
 	{
-		fprintf(stderr, "Usage: test <simple | less | cat>\n");
+		fprintf(stderr, "Usage: test <simple | less | cat | bonus>\n");
 		return (1);
 	}
 	if (!strcmp(av[1], "simple"))
@@ -50,5 +55,7 @@ int			main(int ac, char *av[])
 		run_less_simple();
 	else if (!strcmp(av[1], "cat"))
 		test_cat();
+	else if (!strcmp(av[1], "bonus"))
+		run_bonus();
 	return (0);
 }

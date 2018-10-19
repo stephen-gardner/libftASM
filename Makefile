@@ -7,7 +7,7 @@
 NAME = test
 CC = gcc
 CFLAGS += -Wall -Werror -Wextra
-CFLAGS += -Ofast -funroll-loops
+CFLAGS += #-Ofast -funroll-loops
 CFLAGS += #-g -fsanitize=address
 INC = -I inc -I libfts/inc
 LIBFT = libfts/libfts.a
@@ -15,6 +15,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = \
+	bonus_tests\
 	less_simple_tests\
 	main\
 	simple_tests
