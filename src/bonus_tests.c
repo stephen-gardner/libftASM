@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 06:29:05 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 18:51:21 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/18 22:20:39 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,29 @@
 #include "libfts.h"
 #include <stdio.h>
 #include <string.h>
+
+void		test_strchr(void)
+{
+	char	*str;
+	char	*res;
+
+	printf("ft_strchr:\n---------\n");
+	str = "Text to search for this A letter.";
+	printf("Source       (%p): %s\n\n", str, str);
+	res = ft_strchr(str, 'A');
+	printf("Seeking 'A'  (%p): %s\n", res, res);
+	res = ft_strchr(str, 'T');
+	printf("Seeking 'T'  (%p): %s\n", res, res);
+	res = ft_strchr(str, 'r');
+	printf("Seeking 'r'  (%p): %s\n", res, res);
+	res = ft_strchr(str, '.');
+	printf("Seeking '.'  (%p): %s\n", res, res);
+	res = ft_strchr(str, '\0');
+	printf("Seeking '\\0' (%p): %s\n", res, res);
+	res = ft_strchr(str, 'z');
+	printf("Seeking 'z'  (%p): %s\n", res, res);
+	printf("\n");
+}
 
 static void	run_strcmp(const char *s1, const char *s2)
 {
