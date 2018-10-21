@@ -5,8 +5,10 @@
 ################################################################################
 
 NAME = libfts.a
-CC = nasm
-CFLAGS += -f macho64
+AR = ar
+ARFLAGS = -rcs
+AS = nasm
+ASFLAGS += -f macho64
 SRC_DIR = src
 OBJ_DIR = obj
 
@@ -52,12 +54,12 @@ YELLOW = \033[1;33m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -rcs $@ $(OBJ)
+	@$(AR) $(ARFLAGS) $@ $(OBJ)
 	@echo "$(GREEN)DONE$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) $< -o $@
+	@$(AS) $(ASFLAGS) $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
