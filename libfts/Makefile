@@ -29,6 +29,7 @@ SRC = \
 	strdup\
 	strlen\
 	strsplit\
+	strtrim\
 	tolower\
 	toupper
 

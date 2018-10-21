@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:09:48 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/19 05:44:47 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/20 18:39:09 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	run_bonus(void)
 	test_strchr();
 	test_strcmp();
 	test_strsplit();
+	test_strtrim();
 }
 
 int			main(int ac, char *av[])

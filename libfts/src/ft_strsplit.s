@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/19 04:20:04 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/19 21:23:56 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/20 18:34:10 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -45,7 +45,7 @@ _ft_strsplit:
 	mov		[rbp - 16], rsi
 	mov		[rbp - 24], al
 	call	_malloc
-	cmp		rax, 0
+	test	rax, rax
 	je		.done
 	mov		r8, rax				; array start position
 	mov		rdx, rax			; array pointer position

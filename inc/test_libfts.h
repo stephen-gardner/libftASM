@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:46:56 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/19 05:42:14 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/20 18:39:28 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TEST_LIBFTS_H
 
 /*
-** Simple tests
+** simple_tests.c
 */
 
 void	test_bzero(void);
@@ -24,7 +24,7 @@ void	test_puts(void);
 void	test_strcat(void);
 
 /*
-** Less simple tests
+** less_simple_tests.c
 */
 
 void	test_cat(void);
@@ -34,10 +34,16 @@ void	test_strdup(void);
 void	test_strlen(void);
 
 /*
-** Bonus tests
+** bonus_tests.c
 */
 
 void	test_strchr(void);
 void	test_strcmp(void);
 void	test_strsplit(void);
+
+/*
+** more_bonus_tests.c
+*/
+
+void	test_strtrim(void);
 #endif

@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/15 02:17:06 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/18 03:30:33 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/20 06:24:01 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -19,7 +19,7 @@ _ft_puts:
 	mov		rbp, rsp
 	sub		rsp, 32					; reserve space for iovec array
 	mov		qword [rbp - 8], 1
-	lea		rsi, [rel newline]
+	lea		rsi, [rel _newline]
 	mov		[rbp - 16], rsi			; pointer to newline
 	mov		[rbp - 32], rdi			; pointer to string
 	xor		al, al
@@ -37,4 +37,5 @@ _ft_puts:
 	ret
 
 	section	.data
-newline db	0x0A
+_newline:
+	db		0x0A

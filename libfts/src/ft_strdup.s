@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 05:35:39 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/18 03:38:41 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/20 20:18:27 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -26,7 +26,7 @@ _ft_strdup:
 	mov		rdi, rcx
 	mov		[rbp - 16], rdi		; len + 1
 	call	_malloc
-	cmp		rax, 0
+	test	rax, rax
 	je		.done
 	mov		rdi, rax
 	mov		rsi, [rbp - 8]

@@ -17,6 +17,7 @@ OBJ_DIR = obj
 SRC = \
 	bonus_tests\
 	less_simple_tests\
+	more_bonus_tests\
 	main\
 	simple_tests
 
