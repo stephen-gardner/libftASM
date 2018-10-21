@@ -7,8 +7,8 @@
 NAME = test
 CC = gcc
 CFLAGS += -Wall -Werror -Wextra
-CFLAGS += #-Ofast -funroll-loops
-CFLAGS += #-g -fsanitize=address
+CFLAGS += -Ofast -funroll-loops
+CFLAGS += -g -fsanitize=address
 INC = -I inc -I libfts/inc
 LIBFT = libfts/libfts.a
 SRC_DIR = src

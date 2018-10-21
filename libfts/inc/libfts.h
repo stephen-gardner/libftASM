@@ -6,7 +6,7 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:17:10 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/20 00:45:15 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/10/20 22:47:26 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 int		ft_strcmp(const char *s1, const char *s2);
 char	**ft_strsplit(const char *s, char delim);
+char	*ft_strsub(const char *s, size_t start, size_t len);
 char	*ft_strtrim(const char *s);
 #endif
