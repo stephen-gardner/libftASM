@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/19 23:18:15 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/20 21:08:26 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/10/22 21:45:19 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -27,27 +27,20 @@ _ft_strtrim:
 	je		.find_start
 	dec		rsi
 	mov		[rbp - 8], rsi					; start of data for trimmed string
-	mov		rdi, rsi
-	mov		rcx, -1
-	xor		al, al
-	repne	scasb							; scan to terminator
-	dec		rdi
-	cmp		rdi, rsi
-	je		.empty							; result will be empty
-	dec		rdi								; move to before null terminator
-	mov		rsi, rdi
+	mov		rdx, rsi
 .find_end:
-	std										; scan backwards for new end
 	lodsb
-	cld
 	lea		rdi, [rel _whitesp]
 	mov		rcx, 5
 	repne	scasb
 	je		.find_end
-	add		rsi, 2							; include last character scanned
-.empty:
-	sub		rsi, [rbp - 8]
-	mov		[rbp - 16], rsi					; length of trimmed string
+	test	al, al
+	je		.build
+	mov		rdx, rsi						; record position + 1 of char
+	jmp		.find_end
+.build:
+	sub		rdx, [rbp - 8]
+	mov		[rbp - 16], rdx					; length of trimmed string
 	mov		rdi, rsi
 	inc		rdi								; add space for null terminator
 	call	_malloc
