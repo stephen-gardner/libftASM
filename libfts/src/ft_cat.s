@@ -6,13 +6,12 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/16 22:43:30 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/20 20:19:35 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/11/21 20:56:38 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
 	global	_ft_cat
-	extern	_read
-	extern	_write
+	extern	___error
 
 	section	.text
 _ft_cat:
@@ -24,15 +23,25 @@ _ft_cat:
 	mov		edi, [rbp - 4]
 	lea		rsi, [rbp - 4112]	; buffer
 	mov		rdx, 4096
-	call	_read
+	mov		rax, 0x2000003		; read
+	syscall
+	jc		.error
 	test	rax, rax
-	jle		.done
+	je		.done
 	mov		rdx, rax			; bytes read
 	mov		edi, 1
 	lea		rsi, [rbp - 4112]
-	call	_write
+	mov		rax, 0x2000004		; write
+	syscall
+	jc		.error
 	test	rax, rax
-	jg		.read
+	je		.done
+	jmp		.read
+.error:
+	mov		r12, rax
+	call	___error			; get pointer to errno
+	mov		[rax], r12
+	mov		rax, -1
 .done:
 	add		rsp, 4112
 	pop		rbp

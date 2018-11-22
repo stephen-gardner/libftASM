@@ -6,12 +6,13 @@
 /*   By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 05:51:23 by sgardner          #+#    #+#             */
-/*   Updated: 2018/10/18 06:00:02 by sgardner         ###   ########.fr       */
+/*   Updated: 2018/11/21 20:59:20 by sgardner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_libfts.h"
 #include "libfts.h"
+#include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,9 +27,9 @@ void	test_cat(void)
 		return ;
 	ft_cat(fd);
 	close(fd);
-	printf("\nTesting on invalid file descriptor...");
+	printf("\nTesting on invalid file descriptor: ");
 	ft_cat(-42);
-	printf(" success!\n");
+	printf("%s\n", strerror(errno));
 }
 
 void	test_memcpy(void)
