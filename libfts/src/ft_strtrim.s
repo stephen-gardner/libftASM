@@ -6,7 +6,7 @@
 ;    By: sgardner <stephenbgardner@gmail.com>       +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/10/19 23:18:15 by sgardner          #+#    #+#              ;
-;    Updated: 2018/10/22 21:45:19 by sgardner         ###   ########.fr        ;
+;    Updated: 2018/12/01 21:44:55 by sgardner         ###   ########.fr        ;
 ;                                                                              ;
 ; ---------------------------------------------------------------------------- ;
 
@@ -22,7 +22,7 @@ _ft_strtrim:
 .find_start:
 	lodsb
 	lea		rdi, [rel _whitesp]
-	mov		rcx, 5
+	mov		rcx, 6
 	repne	scasb
 	je		.find_start
 	dec		rsi
@@ -31,7 +31,7 @@ _ft_strtrim:
 .find_end:
 	lodsb
 	lea		rdi, [rel _whitesp]
-	mov		rcx, 5
+	mov		rcx, 6
 	repne	scasb
 	je		.find_end
 	test	al, al
@@ -58,4 +58,4 @@ _ft_strtrim:
 
 	section	.data
 _whitesp:
-	db		0x20, 0x09, 0x0A, 0x0B, 0x0C
+	db		0x20, 0x09, 0x0A, 0x0B, 0x0C, 0x0D
